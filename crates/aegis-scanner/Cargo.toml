@@ -1,0 +1,18 @@
+[package]
+name = "aegis-scanner"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+aegis-crawler = { path = "../aegis-crawler" }
+aegis-native-active = { path = "../aegis-native-active" }
+aegis-native-engine = { path = "../aegis-native-engine" }
+aegis-native-http = { path = "../aegis-native-http" }
+aegis-native-passive = { path = "../aegis-native-passive" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+thiserror = "2.0"
+tokio = { version = "1", features = ["rt-multi-thread"] }
+url = "2.5"

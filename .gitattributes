@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.png binary
+*.ico binary
+
+# Internal planning/history is not part of a public source distribution.
+AGENTS.md export-ignore
+docs/design export-ignore
+docs/research export-ignore
+docs/ideas export-ignore
+docs/product/public-data-service-candidate-evaluation.md export-ignore
+docs/engineering/custom-security-engine-design.md export-ignore
+docs/decisions/2026-06-12-initial-commercial-product-decisions.md export-ignore

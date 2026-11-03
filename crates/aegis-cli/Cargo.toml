@@ -1,0 +1,29 @@
+[package]
+name = "aegis-cli"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "aegis-scan"
+path = "src/main.rs"
+
+[dependencies]
+aegis-core = { path = "../aegis-core" }
+aegis-crawler = { path = "../aegis-crawler" }
+aegis-openapi = { path = "../aegis-openapi" }
+aegis-scanner = { path = "../aegis-scanner" }
+aegis-storage = { path = "../aegis-storage" }
+aegis-triage = { path = "../aegis-triage" }
+aegis-urlseed = { path = "../aegis-urlseed" }
+clap = { version = "4.5", features = ["derive"] }
+ed25519-dalek = "2.2"
+flate2 = "1.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+thiserror = "2.0"
+url = "2.5"
+
+[dev-dependencies]
+tempfile = "3.24"

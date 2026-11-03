@@ -1,0 +1,11 @@
+[package]
+name = "aegis-crawler"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+scraper = "0.24"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "2.0"
+url = "2.5"

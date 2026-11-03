@@ -1,0 +1,27 @@
+[package]
+name = "aegis-webshield-ai"
+version = "1.0.0"
+description = "Aegis WebShield AI desktop app"
+edition.workspace = true
+license.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2.5", features = [] }
+
+[dependencies]
+aegis-ai = { path = "../crates/aegis-ai" }
+aegis-core = { path = "../crates/aegis-core" }
+aegis-crawler = { path = "../crates/aegis-crawler" }
+aegis-openapi = { path = "../crates/aegis-openapi" }
+aegis-scanner = { path = "../crates/aegis-scanner" }
+aegis-secrets = { path = "../crates/aegis-secrets" }
+aegis-storage = { path = "../crates/aegis-storage" }
+aegis-triage = { path = "../crates/aegis-triage" }
+aegis-urlseed = { path = "../crates/aegis-urlseed" }
+ed25519-dalek = "2.2"
+flate2 = "1.1"
+tauri = { version = "2.9", features = [] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+url = "2.5"

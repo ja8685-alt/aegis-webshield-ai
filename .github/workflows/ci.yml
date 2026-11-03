@@ -1,0 +1,39 @@
+name: Community source checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:publication
+      - run: npx playwright install chromium
+      - run: npm run test:community-ui
+      - run: npm run verify:tauri-security
+      - run: npm run verify:brand-icons
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --workspace
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+          cache: false
+      - run: go install github.com/zricethezav/gitleaks/v8@v8.30.1
+      - run: gitleaks git . --log-opts=--all --redact=100 --no-banner --ignore-gitleaks-allow

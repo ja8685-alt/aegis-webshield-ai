@@ -1,0 +1,33 @@
+# Run manually in a new repository containing only the reviewed public source.
+# This pipeline checks source only; Windows installer verification is separate.
+clone:
+  depth: full
+pipelines:
+  custom:
+    public-source-checks:
+      - step:
+          name: Frontend and publication checks
+          image: node:22-bookworm
+          max-time: 20
+          script:
+            - npm ci
+            - npm run build
+            - npm run test:publication
+            - npm run verify:tauri-security
+            - npm run verify:brand-icons
+            - npm audit --audit-level=high
+      - step:
+          name: Rust engine and CLI tests
+          image: rust:1-bookworm
+          max-time: 35
+          script:
+            - rustup component add rustfmt
+            - cargo fmt --all -- --check
+            - cargo test --locked --workspace --exclude aegis-webshield-ai
+      - step:
+          name: Full Git history secret scan
+          image: golang:1-bookworm
+          max-time: 15
+          script:
+            - go install github.com/zricethezav/gitleaks/v8@v8.30.1
+            - gitleaks git . --log-opts=--all --redact=100 --no-banner --ignore-gitleaks-allow

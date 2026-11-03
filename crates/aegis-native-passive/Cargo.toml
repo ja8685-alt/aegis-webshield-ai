@@ -1,0 +1,15 @@
+[package]
+name = "aegis-native-passive"
+version = "0.1.0"
+edition = "2021"
+description = "Deterministic passive and configuration detectors for Aegis Native Security Engine"
+license = "Apache-2.0"
+publish = false
+
+[dependencies]
+aegis-native-engine = { path = "../aegis-native-engine" }
+sha2 = "0.10"
+url = "2"
+
+[lints.rust]
+unsafe_code = "forbid"

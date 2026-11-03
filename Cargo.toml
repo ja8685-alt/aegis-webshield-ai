@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/aegis-ai",
+  "crates/aegis-cli",
+  "crates/aegis-core",
+  "crates/aegis-crawler",
+  "crates/aegis-native-active",
+  "crates/aegis-native-discovery",
+  "crates/aegis-native-engine",
+  "crates/aegis-native-http",
+  "crates/aegis-native-passive",
+  "crates/aegis-openapi",
+  "crates/aegis-scanner",
+  "crates/aegis-secrets",
+  "crates/aegis-storage",
+  "crates/aegis-triage",
+  "crates/aegis-urlseed",
+  "src-tauri"
+]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
